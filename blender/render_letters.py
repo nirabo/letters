@@ -32,7 +32,7 @@ def rand_col_obj(mat):
 
 obj_names = ["A", "B", "C"]
 obj_count = len(obj_names)
-obj_renders_per_split = [('train',300), ('val', 80), ('test',10)]
+obj_renders_per_split = [('train',500), ('val', 200), ('test',100)]
 
 output_path = "./data/letters"
 
