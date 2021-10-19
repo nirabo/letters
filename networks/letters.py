@@ -12,16 +12,17 @@ class LettersNetwork(torch.nn.Module):
         self.fc1 = torch.nn.Linear(4800, 120)
         self.fc2 = torch.nn.Linear(120, 84)
         self.fc3 = torch.nn.Linear(84, 3)
+        self.dropout = torch.nn.Dropout(0.4)
 
     def forward(self, x):
-        x = self.pool(torch.nn.functional.relu(self.conv1(x)))
+        x = self.dropout(self.pool(torch.nn.functional.relu(self.conv1(x))))
         x = self.pool(torch.nn.functional.relu(self.conv2(x)))
-        x = self.pool(torch.nn.functional.relu(self.conv3(x)))
+        x = self.dropout(self.pool(torch.nn.functional.relu(self.conv3(x))))
         x = self.pool(torch.nn.functional.relu(self.conv4(x)))
-        x = torch.flatten(x, 1) # flatten all dimensions except batch
+        x = self.dropout(torch.flatten(x, 1)) # flatten all dimensions except batch
 #         print(x.shape)
         x = torch.nn.functional.relu(self.fc1(x))
-        x = torch.nn.functional.relu(self.fc2(x))
+        x = self.dropout(torch.nn.functional.relu(self.fc2(x)))
         x = self.fc3(x)
         x = torch.softmax(x, dim=1)
         return x

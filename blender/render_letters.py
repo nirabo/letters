@@ -25,8 +25,6 @@ def rand_col_obj(mat):
     
 #rand_rot_obj(bpy.context.scene.objects["B"])
 #rand_col_obj(bpy.data.materials['Letter Material'])
-
-
 #bpy.context.scene.render.filepath = "/home/lpetrov/projects/blender/letters/b.png"
 #bpy.ops.render.render(write_still=True)
 
