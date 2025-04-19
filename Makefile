@@ -1,6 +1,6 @@
 .PHONY: data
 
-BLENDER := /home/lpetrov/opt/blender-2.93.4-linux-x64/blender
+BLENDER := /home/lpetrov/opt/blender-3.4.1-linux-x64/blender
 
 PYVERSION := 3
 VENV_NAME?=.venv
